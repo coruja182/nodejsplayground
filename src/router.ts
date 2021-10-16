@@ -2,6 +2,6 @@ import { Router } from 'express'
 import { locationController } from './controller'
 const router = Router()
 
-router.use('/timezones', locationController)
+router.use('/location', locationController)
 
 export default router
