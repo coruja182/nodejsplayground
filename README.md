@@ -1,14 +1,35 @@
 # NodeJS Playground
 
-NodeJS Playground Project
+This is a dummy API implemented in nodeJS that I am creating just to learn how to build something from scratch using this language and how to integrate the various libs that I might need to achieve what I call 'a beautiful project'. Code should be easy to understand and run.
+
+Starting the project:
 
 ```shell
-npm run server
+npm start
 ```
 
 open your browser on <http://localhost:3000/timezones>
 
 ## Development Notes
+
+Requirements:
+
+- TypeScript should be used
+- Environment agnostic architecture
+- Code should be easily debugged on vscode
+
+Next Steps:
+
+- [ ] add request body parser in like in this tutorial <https://www.qat.com/simple-rest-service-node-js-express/>
+- [ ] create survey endpoints
+- [ ] model survey table schema
+- [ ] add postgresql using docker
+  - [ ] make initial load of database
+- [ ] unit tests
+- [ ] integration tests
+- [ ] integrate automatic openapi swagger documentation
+- [ ] deployment, how does it work?
+- [ ] validate with some NodeJS expert friend ;)
 
 ### JEST
 
@@ -24,6 +45,17 @@ Merged both configurations into one `jest.config.js`
 
 ## References
 
+- Using TypeScript with Node.js and Express <https://blog.logrocket.com/typescript-with-node-js-and-express/>
 - Build an API with Node.js, Express, and TypeScript <https://www.split.io/blog/node-js-typescript-express-tutorial/>
 - Use TypeScript to Build a Node API with Express <https://developer.okta.com/blog/2018/11/15/node-express-typescript>
 - Minimalistic Express Boilerplate with TypeScript and Live Debugging <https://github.com/meilenstein-io/express-typescript-microservice>
+
+Routes and Controllers
+
+- Express Tutorial Part 4: Routes and controllers <https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/routes>
+- Simple REST Service with Node.js and Express <https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/routes>
+- Build a REST API with Node.js: Routes and Controllers <https://lo-victoria.com/build-a-rest-api-with-nodejs-routes-and-controllers>
+
+Swagger
+
+- How to add Swagger UI to an existing Node.js and Express.js project <https://levelup.gitconnected.com/how-to-add-swagger-ui-to-existing-node-js-and-express-js-project-2c8bad9364ce>

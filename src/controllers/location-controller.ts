@@ -1,10 +1,8 @@
 import express, { Request, Response, NextFunction } from 'express';
 import StatusCodes  from 'http-status-codes';
-import LocationWithTimezone from '../model/location-with-timezones';
+import LocationWithTimezone from '../models/location-with-timezones';
 
-const locationController = express.Router()
-
-const getTimezones = (request: Request, response: Response<LocationWithTimezone[]>, next: NextFunction) => {
+const timezones_get = (request: Request, response: Response<LocationWithTimezone[]>, next: NextFunction) => {
   const locations: LocationWithTimezone[] = [
     {
       location: 'Germany',
@@ -35,9 +33,6 @@ const getTimezones = (request: Request, response: Response<LocationWithTimezone[
   response.status(StatusCodes.OK).json(locations);
 }
 
-locationController.get('/timezones', getTimezones);
-
-export {
-  locationController,
-  getTimezones
+export default {
+  timezones_get
 }

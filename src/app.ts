@@ -1,5 +1,5 @@
 import express, { Request, Response, NextFunction } from 'express';
-import router from './router';
+import indexRoutes from './routes/index-routes';
 
 class App {
   public app: express.Application;
@@ -10,8 +10,11 @@ class App {
   }
 
   private config(): void {
-    this.app.use('/', router);
-    console.log('App configured.', router)
+
+    // for parsing application/json
+    this.app.use(express.json())
+    this.app.use('/', indexRoutes)
+    console.log('App configured.', indexRoutes)
   }
 }
 

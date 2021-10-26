@@ -1,4 +1,4 @@
-import { Person } from "./person"
+import { Person } from ".";
 
 describe('The Person Class', () => {
   let person: Person
@@ -16,8 +16,4 @@ describe('The Person Class', () => {
     expect(person.age).toEqual(35)
   })
 
-  it('When birth date is set to undefined the age should return undefined', () => {
-    person.birthDate = undefined
-    expect(person.age).toBeUndefined()
-  })
 })

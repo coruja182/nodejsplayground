@@ -1,9 +1,9 @@
-export class Person {
-  id: string;
-  firstName: string;
-  lastName: string;
-  private _age: Number
-  private _birthDate: Date;
+export default class Person {
+  id: string|undefined;
+  firstName: string|undefined;
+  lastName: string|undefined;
+  private _age: Number|undefined
+  private _birthDate: Date|undefined;
 
   public get age() {
     if (!this._birthDate) {
