@@ -23,6 +23,7 @@ Next Steps:
 - [ ] add request body parser in like in this tutorial <https://www.qat.com/simple-rest-service-node-js-express/>
 - [ ] create survey endpoints
 - [ ] model survey table schema
+- [ ] [Database Integration](#postgresql-and-docker-compose)
 - [ ] add postgresql using docker
   - [ ] make initial load of database
 - [ ] unit tests
@@ -55,6 +56,10 @@ Routes and Controllers
 - Express Tutorial Part 4: Routes and controllers <https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/routes>
 - Simple REST Service with Node.js and Express <https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/routes>
 - Build a REST API with Node.js: Routes and Controllers <https://lo-victoria.com/build-a-rest-api-with-nodejs-routes-and-controllers>
+
+### PostgreSQL and docker-compose
+
+- GitHub example <https://github.com/CyberZujo/todo-app>
 
 Swagger
 
