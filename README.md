@@ -20,6 +20,8 @@ Requirements:
 
 Next Steps:
 
+- [ ] create a new github project for nodeJS (without typescript?) for work-related investigations and keep this project clean
+  - [ ] move the timezone-service related there
 - [ ] add request body parser in like in this tutorial <https://www.qat.com/simple-rest-service-node-js-express/>
 - [ ] create survey endpoints
 - [ ] model survey table schema
