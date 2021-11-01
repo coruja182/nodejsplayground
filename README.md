@@ -59,6 +59,11 @@ Routes and Controllers
 - Simple REST Service with Node.js and Express <https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/routes>
 - Build a REST API with Node.js: Routes and Controllers <https://lo-victoria.com/build-a-rest-api-with-nodejs-routes-and-controllers>
 
+### TypeScript Node.js Setup
+
+- How to Setup a TypeScript + Node.js Project <https://khalilstemmler.com/blogs/typescript/node-starter-project/>
+  - code <https://github.com/stemmlerjs/simple-typescript-starter>
+
 ### PostgreSQL and docker-compose
 
 - GitHub example <https://github.com/CyberZujo/todo-app>
@@ -66,3 +71,7 @@ Routes and Controllers
 Swagger
 
 - How to add Swagger UI to an existing Node.js and Express.js project <https://levelup.gitconnected.com/how-to-add-swagger-ui-to-existing-node-js-and-express-js-project-2c8bad9364ce>
+
+### Unit Tests With Jest And TypeScript
+
+- How to mock an imported Typescript class with Jest <https://dev.to/codedivoire/how-to-mock-an-imported-typescript-class-with-jest-2g7j>

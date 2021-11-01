@@ -1,7 +1,13 @@
-import app from './app';
+import app from './app'
 
-const PORT = 3000;
+const startServer = () => {
+    const PORT = 3000;
 
-app.listen(PORT, () => {
-    console.log(`Listening on ${PORT}`)
-});
+    app.listen(PORT, () => {
+        console.log(`Listening on ${PORT}`)
+    });
+}
+
+export {
+    startServer
+}

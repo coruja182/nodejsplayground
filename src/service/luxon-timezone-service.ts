@@ -1,12 +1,8 @@
 import TimezoneService from './timezone-service'
 import { DateTime } from 'luxon'
+import { TIMEZONE_SAO_PAULO } from './service-constants';
 
-/**
-const isoDateStr = '2021-10-20T12:11:22.33333Z'
-const isoDateStr_short = '2021-10-20T12:11:22Z'
-const brFormat = '2021.10.20-12:11:22.33333'
-const brFormat_short = '2021.10.20-12:11:22'
- */
+const TIMESTAMP_NEW_PATTERN = 'yyyy-MM-dd-hh.mm.ss';
 export default class LuxonTimezoneService implements TimezoneService {
 
   iso8601ToWeirdBrazilFormat = (utcDateStr: string | undefined): string | undefined => {
@@ -19,8 +15,8 @@ export default class LuxonTimezoneService implements TimezoneService {
     const fractionPart = split[1] || ''
 
     const parsed = DateTime.fromISO(datePart, {zone: 'utc'})
-    const rezoned = parsed.setZone('America/Sao_Paulo')
-    const formatted = rezoned.toFormat('yyyy.MM.dd-hh:mm:ss') + fractionPart
+    const rezoned = parsed.setZone(TIMEZONE_SAO_PAULO)
+    const formatted = rezoned.toFormat(TIMESTAMP_NEW_PATTERN) + fractionPart
     return formatted
   }
 
@@ -30,10 +26,17 @@ export default class LuxonTimezoneService implements TimezoneService {
       return brDateStr
     }
 
-    const split = brDateStr.match(/.{1,19}/g) || []
-    const datePart = split[0]
-    const fractionPart = split[1] || ''
+    const split = brDateStr.match(/.{1,19}/g)
+    const datePart = split![0]
+    const fractionPart = split![1] || ''
 
-    return datePart
+    const parsed = DateTime.fromFormat(datePart, 'yyyy-MM-dd-hh.mm.ss', {
+      zone: 'America/Sao_Paulo'
+    })
+
+    return parsed.setZone('utc').toISO({
+      suppressMilliseconds: true,
+      includeOffset: false
+    }) + `${fractionPart}Z`
   }
 }
