@@ -8,7 +8,7 @@
     "start:dev": "nodemon",
     "start": "npm run build && node build/index.js",
     "test": "jest",
-    "test:othertz": "TZ=America/Sao_Paulo jest",
+    "test:othertz": "jest",
     "test:dev": "jest --watchAll"
   },
   "license": "MIT",
