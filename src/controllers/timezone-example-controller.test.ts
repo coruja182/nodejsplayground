@@ -8,7 +8,7 @@ import { datefnsTimezoneService, TimezoneService } from '../service'
 jest.mock('../service', () => {
   return {
     datefnsTimezoneService: {
-      iso8601ToWeirdBrazilFormat: jest.fn()
+      utcIso8601ToServiceTimestamp: jest.fn()
     }
   }
 })
@@ -28,9 +28,9 @@ describe('The TimezoneExampleController', () => {
     jest.resetAllMocks()
   })
 
-  it('The get endpoint responds OK, make all service calls and returns the json payload', () => {
+  it('The get endpoint responds OK, make all service calls and returns the json payload', async () => {
     // prepare
-    mockedDatefnsTimezoneService.iso8601ToWeirdBrazilFormat.mockReturnValue(expectedTimestamp)
+    await mockedDatefnsTimezoneService.utcIso8601ToServiceTimestamp.mockReturnValue(expectedTimestamp)
     const { res } = mockRes
 
     // execute
@@ -38,7 +38,7 @@ describe('The TimezoneExampleController', () => {
 
     // assert
     expect(res.status).toBeCalledWith(StatusCodes.OK)
-    expect(mockedDatefnsTimezoneService.iso8601ToWeirdBrazilFormat).toHaveBeenCalled()
+    expect(mockedDatefnsTimezoneService.utcIso8601ToServiceTimestamp).toHaveBeenCalled()
     expect(res.json).toHaveBeenCalledWith({
       id: expect.anything(),
       modificationTimestamp: expectedTimestamp

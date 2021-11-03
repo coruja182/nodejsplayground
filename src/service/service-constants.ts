@@ -1,1 +1,1 @@
-export const TIMEZONE_SAO_PAULO = 'America/Sao_Paulo'
+export const SERVICE_TIMEZONE = 'Europe/Berlin'

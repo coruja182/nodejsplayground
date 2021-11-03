@@ -6,6 +6,6 @@
  * before calling it.
  */
 export default interface TimezoneService {
-  iso8601ToWeirdBrazilFormat: (utcDateStr: string | undefined) => string | undefined;
-  weirdBrazilFormatToIso8601: (brDateStr: string | undefined) => string | undefined
+  utcIso8601ToServiceTimestamp: (utcDateStr: string | undefined) => string | undefined;
+  serviceTimestampToUtcIso8601: (brDateStr: string | undefined) => string | undefined
 }

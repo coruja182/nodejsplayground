@@ -11,11 +11,11 @@ export default class TimezoneExampleController {
     this.service = serviceImplementation
   }
 
-  get = (request: Request<any>, response: Response<TimezoneExample>) => {
+  get = async (request: Request<any>, response: Response<TimezoneExample>) => {
 
     const payload = {
       id: '0',
-      modificationTimestamp: this.service.iso8601ToWeirdBrazilFormat(new Date().toISOString())
+      modificationTimestamp: this.service.utcIso8601ToServiceTimestamp(new Date().toISOString())
     }
 
     response
@@ -23,13 +23,13 @@ export default class TimezoneExampleController {
       .json(payload)
   }
 
-  post = (request: Request<TimezoneExample>, response: Response<TimezoneExample>) => {
+  post = async (request: Request<TimezoneExample>, response: Response<TimezoneExample>) => {
     console.log(JSON.stringify(request.body))
     response
       .status(StatusCodes.OK)
       .json({
         id: request.body?.id,
-        modificationTimestamp: this.service.iso8601ToWeirdBrazilFormat(new Date().toISOString())
+        modificationTimestamp: this.service.utcIso8601ToServiceTimestamp(new Date().toISOString())
       })
   }
 }
