@@ -1,5 +1,7 @@
+const DEFAULT_CURRENCY = 'EUR'
+
 class Amount {
-  constructor(amount = '', numberOfDecimals = 2, currency = 'EUR') {
+  constructor(amount = '', numberOfDecimals = 2, currency = DEFAULT_CURRENCY) {
     this.amount = amount
     this.numberOfDecimals = numberOfDecimals
     this.currency = currency
@@ -10,6 +12,13 @@ class Amount {
   }
 }
 
+const fromAmountAndCurrency = (amount='0.00', currency=DEFAULT_CURRENCY) => {
+  const numberOfDecimals = amount.length - amount.lastIndexOf('.') -1
+  const amountValue = amount.replace('.', '')
+  return new Amount(amountValue, numberOfDecimals, currency)
+}
+
 module.exports = {
-  Amount
+  Amount,
+  fromAmountAndCurrency
 }

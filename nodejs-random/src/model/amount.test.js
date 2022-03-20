@@ -1,4 +1,5 @@
-const { Amount } = require('./amount')
+const { any } = require('expect')
+const { Amount, fromAmountAndCurrency } = require('./amount')
 
 describe('The Amount Class', () => {
   it('should be defined when instantiated', () => {
@@ -14,6 +15,40 @@ describe('The Amount Class', () => {
       const subject = new Amount('100', 2, 'USD')
       const amount = subject.getAmount()
       expect(amount).toEqual('1.00')
+    })
+
+    it('when an amount is not specified and 2 decimal places are used, it should use 0.00', () => {
+      const subject = new Amount('', 2, 'USD')
+      const amount = subject.getAmount()
+      expect(amount).toEqual('0.00')
+    })
+
+    it('shoud handle decimal places longer than the amount', () => {
+      const subject = new Amount('1', 2, 'USD')
+      const amount = subject.getAmount()
+      expect(amount).toEqual('0.01')
+    })
+  })
+
+  describe('The fromAmountAndCurrency', () => {
+    it('should return an Amount instance from the amount with 2 decimal places and set currency to EUR when not provided', () => {
+      const subject = fromAmountAndCurrency('1.23')
+      expect(subject).toEqual({
+        amount: '123',
+        numberOfDecimals: 2,
+        currency: 'EUR',
+        getAmount: expect.any(Function)
+      })
+    })
+
+    it('should return an Amount instance from the amount with 3 decimal places', () => {
+      const subject = fromAmountAndCurrency('1.234', 'USD')
+      expect(subject).toEqual({
+        amount: '1234',
+        numberOfDecimals: 3,
+        currency: 'USD',
+        getAmount: any(Function)
+      })
     })
   })
 })
