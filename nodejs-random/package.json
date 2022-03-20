@@ -1,0 +1,34 @@
+{
+  "name": "nodejs-random",
+  "version": "1.0.0",
+  "description": "nodejs where I practice some random stuff",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint src/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coruja182/nodejsplayground.git"
+  },
+  "keywords": [
+    "nodejs",
+    "jest",
+    "javascript"
+  ],
+  "author": "Luis Henrique Silveira da Rocha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/coruja182/nodejsplayground/issues"
+  },
+  "homepage": "https://github.com/coruja182/nodejsplayground#readme",
+  "devDependencies": {
+    "@types/jest": "^27.4.1",
+    "eslint": "8.11.0",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-plugin-prettier": "4.0.0",
+    "expect": "^27.5.1",
+    "jest": "^27.5.1",
+    "prettier": "2.6.0"
+  }
+}

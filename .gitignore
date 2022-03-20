@@ -5,3 +5,7 @@ build
 coverage
 *.bak
 .idea
+**/.idea
+**/.git
+**/node_mogules
+
