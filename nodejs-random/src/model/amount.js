@@ -13,7 +13,7 @@ class Amount {
 }
 
 const fromAmountAndCurrency = (amount='0.00', currency=DEFAULT_CURRENCY) => {
-  const numberOfDecimals = amount.length - amount.lastIndexOf('.') -1
+  const numberOfDecimals = amount.length - amount.indexOf('.') -1
   const amountValue = amount.replace('.', '')
   return new Amount(amountValue, numberOfDecimals, currency)
 }

@@ -26,9 +26,9 @@ module.exports = {
   coverageDirectory: "coverage",
 
   // An array of regexp pattern strings used to skip coverage collection
-  // coveragePathIgnorePatterns: [
-  //   "/node_modules/"
-  // ],
+  coveragePathIgnorePatterns: [
+    "/node_modules/"
+  ],
 
   // Indicates which provider should be used to instrument code for coverage
   coverageProvider: "v8",
@@ -66,9 +66,9 @@ module.exports = {
   // maxWorkers: "50%",
 
   // An array of directory names to be searched recursively up from the requiring module's location
-  // moduleDirectories: [
-  //   "node_modules"
-  // ],
+  moduleDirectories: [
+    "node_modules"
+  ],
 
   // An array of file extensions your modules use
   // moduleFileExtensions: [
@@ -102,7 +102,7 @@ module.exports = {
   // reporters: undefined,
 
   // Automatically reset mock state before every test
-  // resetMocks: false,
+  resetMocks: false,
 
   // Reset the module registry before running each individual test
   // resetModules: false,
@@ -114,7 +114,7 @@ module.exports = {
   // restoreMocks: false,
 
   // The root directory that Jest should scan for tests and modules within
-  rootDir: 'src',
+  // rootDir: 'src',
 
   // A list of paths to directories that Jest should use to search for files in
   // roots: [
@@ -128,7 +128,9 @@ module.exports = {
   // setupFiles: [],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
-  // setupFilesAfterEnv: [],
+  setupFilesAfterEnv: [
+    'jest-extended/all'
+  ],
 
   // The number of seconds after which a test is considered as slow and reported as such in the results.
   // slowTestThreshold: 5,
@@ -148,8 +150,8 @@ module.exports = {
   // The glob patterns Jest uses to detect test files
   testMatch: [
     '**/*.test.js'
-  //   "**/__tests__/**/*.[jt]s?(x)",
-  //   "**/?(*.)+(spec|test).[tj]s?(x)"
+    //   "**/__tests__/**/*.[jt]s?(x)",
+    //   "**/?(*.)+(spec|test).[tj]s?(x)"
   ],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped

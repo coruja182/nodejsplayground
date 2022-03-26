@@ -1,0 +1,22 @@
+version: '3.3'
+
+services:
+  db:
+    image: mysql:8
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: playground-db
+      MYSQL_USER: luis
+      MYSQL_PASSWORD: luis123
+    ports:
+      - 3306:3306
+    volumes:
+      - ./test-fixtures/mysql:/docker-entrypoint-initdb.d
+
+  adminer:
+    image: adminer:4
+    restart: always
+    ports:
+      - 8080:8080
