@@ -1,12 +1,20 @@
 describe('the person repository', () => {
-  let subject, mockGetConnection, mockQuery, mockFromRow, result
+  /**
+   * @type import('./person-repository')}
+   */
+  let personRepository
+  /**
+  * @type {Person}
+  */
+  let person
+  let mockGetConnection, mockQuery, mockFromRow, result
   const rows = ['row1', 'row2']
 
   beforeAll(() => {
     mockQuery = jest.fn().mockResolvedValue([rows, []])
-    mockGetConnection = jest.fn().mockReturnValue({
+    mockGetConnection = jest.fn().mockReturnValue(({
       query: mockQuery
-    })
+    }))
     jest.mock('./mysql-connector', () => ({
       getConnection: mockGetConnection
     }))
@@ -16,7 +24,7 @@ describe('the person repository', () => {
       fromRow: mockFromRow
     }))
 
-    subject = require('./person-repository')
+    personRepository = require('./person-repository')
   })
 
   describe('when finding all persons', () => {
@@ -26,10 +34,10 @@ describe('the person repository', () => {
       mockFromRow
         .mockReturnValueOnce(expectedReturnValue[0])
         .mockReturnValueOnce(expectedReturnValue[1])
-      result = await subject.findAllPersons()
+      result = await personRepository.findAllPersons()
     })
 
-    it('should retrieve a connection', () => {
+    it('should retrieve a connection', async () => {
       expect(mockGetConnection).toBeCalled()
     })
 
@@ -46,6 +54,69 @@ describe('the person repository', () => {
     it('should return an array of persons', () => {
       expect(result).toBeArray()
       expect(result).toEqual(expectedReturnValue)
+    })
+  })
+
+  describe('when finding a person by id', () => {
+    let findPersonByIdInput
+
+    beforeEach(async () => {
+      result = await personRepository.findPersonById(findPersonByIdInput)
+    })
+
+    describe('and no id is provided to search', () => {
+      beforeAll(async () => {
+        findPersonByIdInput = undefined
+      })
+
+      it('should not execute the query and return undefined', () => {
+        expect(mockGetConnection).not.toBeCalled()
+        expect(mockQuery).not.toBeCalled()
+      })
+    })
+
+    describe('and a valid id is provided to search', () => {
+      beforeAll(async () => {
+        findPersonByIdInput = 'valid-id'
+      })
+
+      it('should retrieve the connection, execute the query and map the return value', () => {
+        expect(mockGetConnection).toBeCalled()
+        expect(mockQuery).toBeCalledWith('SELECT person.* FROM person WHERE id=?', [findPersonByIdInput])
+        expect(mockFromRow).toBeCalled()
+      })
+    })
+  })
+
+
+  describe('when deleting a person by id', () => {
+    let deletePersonByIdInput
+
+    beforeEach(async () => {
+      result = await personRepository.deletePerson(deletePersonByIdInput)
+    })
+
+    describe('and no id is provided to search', () => {
+      beforeAll(async () => {
+        deletePersonByIdInput = undefined
+      })
+
+      it('should not execute the query and return undefined', () => {
+        expect(mockGetConnection).not.toBeCalled()
+        expect(mockQuery).not.toBeCalled()
+      })
+    })
+
+    describe('and a valid id is provided to delete', () => {
+      beforeAll(async () => {
+        deletePersonByIdInput = 'valid-id'
+      })
+
+      it('should retrieve the connection, execute the query and return the affected rows', () => {
+        expect(mockGetConnection).toBeCalled()
+        expect(mockQuery).toBeCalledWith(expect.toEqualIgnoringWhitespace('DELETE FROM `person` p WHERE p.id = ?')
+          , [deletePersonByIdInput])
+      })
     })
   })
 })

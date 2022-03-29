@@ -1,16 +1,31 @@
-const { setupConnection } = require('./repository/mysql-connector');
-const { findAllPersons } = require('./repository/person-repository')
+const { name } = require('faker')
+const { setupConnection } = require('./repository/mysql-connector')
+const { findAllPersons, updatePerson, deletePerson, createPerson, findPersonById } = require('./repository/person-repository');
 
-const main = async () => {
-  console.log('Starting');
+(async () => {
+  console.debug('Starting')
 
-  console.log('setting up database');
+  console.debug('Setting Up Database')
   await setupConnection()
 
-  console.log('calling find all persons');
-  const persons = await findAllPersons();
-  return persons;
-}
+  console.debug('calling find all persons')
 
-var text =  main()
-  .then(out => console.log(out));
+  const persons = await findAllPersons()
+
+  persons[0].firstName = name.firstName()
+
+  const resultUpdate = await updatePerson(persons[0])
+  console.debug('resultUpdate', JSON.stringify(resultUpdate))
+
+  console.debug('Fetching persons:')
+  console.debug(await findAllPersons())
+
+  console.debug('Deleting person.')
+  console.debug(await deletePerson(persons[0].personId))
+
+  console.debug('Inserting person.')
+  console.debug(await createPerson(persons[0]))
+
+  console.debug('Finding person by id')
+  console.debug(await findPersonById(persons[0].personId))
+})()

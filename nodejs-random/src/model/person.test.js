@@ -42,7 +42,7 @@ describe('the Person model', () => {
           firstName: 'Luís Henrique',
           lastName: 'Silveira da Rocha',
           birthDate: '1986-12-01',
-          updatedAt: '2022-03-26T18:57:30.000Z'
+          updatedAt: '2022-03-26 18:57:30.000'
         })
       })
     })
@@ -53,8 +53,8 @@ describe('the Person model', () => {
         firstName: 'Luís Henrique',
         lastName: 'Silveira da Rocha',
         birthDate: '1986-12-01',
-        createdAt: '2022-03-26T18:57:30.000Z',
-        updatedAt: '2022-03-26T18:57:30.000Z'
+        createdAt: '2022-03-26 18:57:30.000',
+        updatedAt: '2022-03-26 18:57:30.000'
       })
     })
   })

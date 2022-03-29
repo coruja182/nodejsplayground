@@ -1,0 +1,10 @@
+{
+  "dbConfig": {
+    "host": "127.0.0.1",
+    "port": 3306,
+    "user": "luis",
+    "password": "luis123",
+    "database": "playground-db",
+    "timezone": "UTC"
+  }
+}
