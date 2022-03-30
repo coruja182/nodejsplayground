@@ -5,16 +5,11 @@ const { getConnection } = require('./mysql-connector')
  * @param {import('../model/person').Person} person
  * @returns {Promise<number>} the affected rows
  */
-const createPerson = async (person) => {
-  if (!person) {
-    console.info('No person provided to be inserted. Skipping...')
-    return
-  }
-
-  const [{ affectedRows }] = await getConnection().query(`
+const _createPerson = async (person) => {
+  const connection = getConnection()
+  const [{ affectedRows }] = await connection.query(`
   INSERT INTO \`person\`(id, first_name, last_name, birth_date, created_at, updated_at)
-  VALUES(?, ?, ?, ?, ?, ?)`, [
-    person.personId,
+  VALUES(UUID(), ?, ?, ?, ?, ?)`, [
     person.firstName,
     person.lastName,
     person.birthDate,
@@ -22,6 +17,7 @@ const createPerson = async (person) => {
     person.updatedAt
   ])
 
+  console.debug(`inserted ${affectedRows} rows into person`)
   return affectedRows
 }
 
@@ -29,20 +25,16 @@ const createPerson = async (person) => {
  * @param {import('../model/person').Person} person
  * @returns {Promise<number>} the affected rows
  */
-const savePerson = async (person) => {
-  if (!person) {
-    console.info('No person provided to be saved. Skipping...')
-    return
-  }
-
-  return person.personId ? updatePerson : createPerson
+const createOrUpdatePerson = async (person) => {
+  if (!person) return
+  return person.personId ? _updatePerson(person) : _createPerson(person)
 }
 
 /**
  * @returns {Promise<Array<import('../model/person').Person>>}
  */
 const findAllPersons = async () => {
-  const connection = await getConnection()
+  const connection = getConnection()
   const [rows,] = await connection.query('SELECT person.* FROM person')
   const result = rows.map(fromRow)
   return result
@@ -66,12 +58,10 @@ const findPersonById = async (personId) => {
  * @param {import('../model/person').Person} person
  * @returns {Promise<number>} the affected rows
  */
-const updatePerson = async (person) => {
-  if (!person) {
-    return
-  }
-  const connection = await getConnection()
-  const [{ affectedRows }] = connection.query(`
+const _updatePerson = async (person) => {
+
+  const connection = getConnection()
+  const [row] = await connection.query(`
   UPDATE \`person\`
   SET \`first_name\`=?,
       \`last_name\`=?,
@@ -87,8 +77,8 @@ const updatePerson = async (person) => {
     person.updatedAt,
     person.personId
   ])
-  console.debug(`${affectedRows} rows updated`)
-  return affectedRows
+  console.debug(`${row.affectedRows} rows updated`)
+  return row.affectedRows
 }
 
 /**
@@ -106,13 +96,12 @@ const deletePerson = async (personId) => {
     DELETE FROM \`person\` p WHERE p.id = ?
   `, [personId])
   console.debug(`${affectedRows} rows deleted`)
+
   return affectedRows
 }
 
 module.exports = {
-  createPerson,
-  updatePerson,
-  savePerson,
+  createOrUpdatePerson,
   findPersonById,
   findAllPersons,
   deletePerson

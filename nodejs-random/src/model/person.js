@@ -1,14 +1,3 @@
-const { isoToUTCStringMapper } = require("./common-mapper")
-
-const COLUMN_DEFINITIONS = {
-  PERSON_ID: 'id',
-  FIRST_NAME: 'first_name',
-  LAST_NAME: 'last_name',
-  BIRTH_DATE: 'birth_date',
-  CREATED_AT: 'created_at',
-  UPDATED_AT: 'updated_at'
-}
-
 class Person {
   constructor(personId, firstName, lastName, birthDate, createdAt, updatedAt) {
     this.personId = personId
@@ -18,6 +7,15 @@ class Person {
     this.createdAt = createdAt
     this.updatedAt = updatedAt
   }
+}
+
+const COLUMN_DEFINITIONS = {
+  PERSON_ID: 'id',
+  FIRST_NAME: 'first_name',
+  LAST_NAME: 'last_name',
+  BIRTH_DATE: 'birth_date',
+  CREATED_AT: 'created_at',
+  UPDATED_AT: 'updated_at'
 }
 
 const fromRow = (row) => {

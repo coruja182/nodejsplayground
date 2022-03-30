@@ -1,8 +1,9 @@
-const { name } = require('faker')
 const { setupConnection } = require('./repository/mysql-connector')
-const { findAllPersons, updatePerson, deletePerson, createPerson, findPersonById } = require('./repository/person-repository');
+const { findAllPersons, createOrUpdatePerson, } = require('./repository/person-repository')
+const createPerson = require('../test-fixtures/create-person-factory')
 
-(async () => {
+const main = async () => {
+
   console.debug('Starting')
 
   console.debug('Setting Up Database')
@@ -10,22 +11,31 @@ const { findAllPersons, updatePerson, deletePerson, createPerson, findPersonById
 
   console.debug('calling find all persons')
 
+  await Promise.all(Array
+    .from({ length: 1000 }, createPerson)
+    .map(createOrUpdatePerson))
+  console.debug('inserted...')
+
   const persons = await findAllPersons()
 
-  persons[0].firstName = name.firstName()
+  // const { personId } = persons[0]
 
-  const resultUpdate = await updatePerson(persons[0])
-  console.debug('resultUpdate', JSON.stringify(resultUpdate))
+
+  // const resultUpdate = await createOrUpdatePerson(persons[0])
+  // console.debug('resultUpdate', JSON.stringify(resultUpdate))
 
   console.debug('Fetching persons:')
   console.debug(await findAllPersons())
 
-  console.debug('Deleting person.')
-  console.debug(await deletePerson(persons[0].personId))
+  // console.debug('Deleting person.')
+  // console.debug(await deletePerson(persons[0].personId))
 
-  console.debug('Inserting person.')
-  console.debug(await createPerson(persons[0]))
+  // console.debug('Inserting person.')
+  // persons[0].personId = undefined
+  // console.debug(await createOrUpdatePerson(persons[0]))
 
-  console.debug('Finding person by id')
-  console.debug(await findPersonById(persons[0].personId))
-})()
+  // console.debug('Finding person by id')
+  // console.debug(await findPersonById(persons[0].personId))
+}
+
+main().catch(console.log)
