@@ -69,12 +69,14 @@ describe('the person repository', () => {
         SET \`first_name\`=?,
             \`last_name\`=?,
             \`birth_date\`=?,
+            \`gender\`=?,
             \`created_at\`=?,
             \`updated_at\`=?
         WHERE \`id\` = ?` ), [
           createOrUpdateInput.firstName,
           createOrUpdateInput.lastName,
           createOrUpdateInput.birthDate,
+          createOrUpdateInput.gender,
           createOrUpdateInput.createdAt,
           createOrUpdateInput.updatedAt,
           createOrUpdateInput.personId
@@ -97,11 +99,12 @@ describe('the person repository', () => {
 
       it('should run the insert query', () => {
         expect(mockQuery).toHaveBeenCalledWith(expect.toEqualIgnoringWhitespace(`
-        INSERT INTO \`person\`(id, first_name, last_name, birth_date, created_at, updated_at)
-        VALUES(UUID(), ?, ?, ?, ?, ?)` ), [
+        INSERT INTO \`person\`(id, first_name, last_name, birth_date, gender, created_at, updated_at)
+        VALUES(UUID(), ?, ?, ?, ?, ?, ?)` ), [
           createOrUpdateInput.firstName,
           createOrUpdateInput.lastName,
           createOrUpdateInput.birthDate,
+          createOrUpdateInput.gender,
           createOrUpdateInput.createdAt,
           createOrUpdateInput.updatedAt
         ])

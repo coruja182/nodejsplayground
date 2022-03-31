@@ -1,5 +1,5 @@
 const { setupConnection } = require('./repository/mysql-connector')
-const { findAllPersons, createOrUpdatePerson, } = require('./repository/person-repository')
+const { createOrUpdatePerson } = require('./repository/person-repository')
 const createPerson = require('../test-fixtures/create-person-factory')
 
 const main = async () => {
@@ -16,7 +16,7 @@ const main = async () => {
     .map(createOrUpdatePerson))
   console.debug('inserted...')
 
-  const persons = await findAllPersons()
+  // const persons = await findAllPersons()
 
   // const { personId } = persons[0]
 
@@ -24,8 +24,8 @@ const main = async () => {
   // const resultUpdate = await createOrUpdatePerson(persons[0])
   // console.debug('resultUpdate', JSON.stringify(resultUpdate))
 
-  console.debug('Fetching persons:')
-  console.debug(await findAllPersons())
+  // console.debug('Fetching persons:')
+  // console.debug(await findAllPersons())
 
   // console.debug('Deleting person.')
   // console.debug(await deletePerson(persons[0].personId))

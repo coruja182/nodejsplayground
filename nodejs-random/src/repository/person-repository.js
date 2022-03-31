@@ -8,11 +8,12 @@ const { getConnection } = require('./mysql-connector')
 const _createPerson = async (person) => {
   const connection = getConnection()
   const [{ affectedRows }] = await connection.query(`
-  INSERT INTO \`person\`(id, first_name, last_name, birth_date, created_at, updated_at)
-  VALUES(UUID(), ?, ?, ?, ?, ?)`, [
+  INSERT INTO \`person\`(id, first_name, last_name, birth_date, gender, created_at, updated_at)
+  VALUES(UUID(), ?, ?, ?, ?, ?, ?)`, [
     person.firstName,
     person.lastName,
     person.birthDate,
+    person.gender,
     person.createdAt,
     person.updatedAt
   ])
@@ -66,6 +67,7 @@ const _updatePerson = async (person) => {
   SET \`first_name\`=?,
       \`last_name\`=?,
       \`birth_date\`=?,
+      \`gender\`=?,
       \`created_at\`=?,
       \`updated_at\`=?
   WHERE \`id\` = ?
@@ -73,6 +75,7 @@ const _updatePerson = async (person) => {
     person.firstName,
     person.lastName,
     person.birthDate,
+    person.gender,
     person.createdAt,
     person.updatedAt,
     person.personId
