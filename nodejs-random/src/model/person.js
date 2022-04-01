@@ -1,3 +1,4 @@
+const { Builder } = require('builder-pattern')
 const mapper = require('object-mapper')
 
 class Person {
@@ -10,6 +11,8 @@ class Person {
     this.createdAt = createdAt
     this.updatedAt = updatedAt
   }
+
+  static builder = () => Builder(Person, {})
 }
 
 const COLUMNS = {

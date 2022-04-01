@@ -1,4 +1,4 @@
-const { fromRow, Gender } = require('./person')
+const { fromRow, Gender, Person } = require('./person')
 
 describe('the Person model', () => {
   let input, result
@@ -12,6 +12,15 @@ describe('the Person model', () => {
     updated_at: '2022-03-26 18:57:30.000'
   })
 
+  const expectedMappedPerson = Person.builder()
+    .personId(ROW.id)
+    .firstName(ROW.first_name)
+    .lastName(ROW.last_name)
+    .birthDate(ROW.birth_date)
+    .gender(Gender.MALE)
+    .createdAt(ROW.created_at)
+    .updatedAt(ROW.updated_at)
+    .build()
 
   describe('when mapping from the database rows', () => {
     beforeEach(() => {
@@ -28,7 +37,7 @@ describe('the Person model', () => {
       })
     })
 
-    describe('and the created at timestamp is undefined', () => {
+    describe('and the created_at timestamp is undefined', () => {
       beforeAll(() => {
         input = {
           ...ROW,
@@ -36,14 +45,10 @@ describe('the Person model', () => {
         }
       })
 
-      it('should map to undefined', () => {
+      it('should map createdAt to undefined', () => {
         expect(result).toEqual({
-          personId: 'f8067dcd-ad3e-11ec-89f5-0242c0a88003',
-          firstName: 'Luís Henrique',
-          lastName: 'Silveira da Rocha',
-          birthDate: '1986-12-01',
-          gender: 'M',
-          updatedAt: '2022-03-26 18:57:30.000'
+          ...expectedMappedPerson,
+          createdAt: undefined
         })
       })
     })
@@ -54,15 +59,7 @@ describe('the Person model', () => {
       })
 
       it('should create a Person instance with all fields populated', () => {
-        expect(result).toEqual({
-          personId: 'f8067dcd-ad3e-11ec-89f5-0242c0a88003',
-          firstName: 'Luís Henrique',
-          lastName: 'Silveira da Rocha',
-          birthDate: '1986-12-01',
-          gender: 'M',
-          createdAt: '2022-03-26 18:57:30.000',
-          updatedAt: '2022-03-26 18:57:30.000'
-        })
+        expect(result).toEqual(expectedMappedPerson)
       })
     })
   })
