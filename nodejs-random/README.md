@@ -23,6 +23,11 @@ After booting up the database, the below will execute what is being done in the 
 node .
 ```
 
+## TODOs
+
+- [ ] use knex to facilitate SQL queries
+- [ ] integration testing
+
 ## References
 
 - Standardizing the code style in a Node.js project <https://headsigned.com/posts/standardizing-the-code-style-in-a-node-js-project/>
