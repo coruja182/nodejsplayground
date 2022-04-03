@@ -34,6 +34,14 @@ Next Steps:
 - [ ] deployment, how does it work?
 - [ ] validate with some NodeJS expert friend ;)
 
+## Some Application Ideas
+
+- Recipe App
+- Quiz App
+- ToDo App (Level Intermediate)
+
+<https://blog.bitsrc.io/15-app-ideas-to-build-and-level-up-your-coding-skills-28612c72a3b1>
+
 ### JEST
 
 Got a full config by running `npx jest --init` and created a backup of it, as I wanted to use ts-jest instead.
