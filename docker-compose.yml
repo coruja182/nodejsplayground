@@ -3,5 +3,21 @@ version: '3'
 services:
   server:
     build: ./server-fs-study
+    command: npm run watch
+    volumes:
+      - ./server-fs-study:/usr/src/app
+      - /usr/src/app/node_modules
     ports:
       - 3000:3000
+    container_name: server-fs
+  client:
+    build: ./client-fs-study
+    command: ng serve --host 0.0.0.0
+    volumes:
+      - ./client-fs-study:/usr/src/app-ui
+      - /usr/src/app-ui/node_modules
+    ports:
+      - 4200:4200
+    container_name: client-fs
+    depends_on:
+      - server
