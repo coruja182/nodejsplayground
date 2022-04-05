@@ -1,6 +1,34 @@
 version: '3'
 
 services:
+  db:
+    image: mysql:8
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: fullstack_db
+      MYSQL_USER: luis
+      MYSQL_PASSWORD: luis123
+    ports:
+      - 3306:3306
+    volumes:
+      - ./db-fs-study/init-scripts:/docker-entrypoint-initdb.d
+      - dbdata:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: pma
+    links:
+      - db
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+    restart: always
+    ports:
+      - 8081:80
+
   server:
     build: ./server-fs-study
     command: npm run watch
@@ -10,6 +38,15 @@ services:
     ports:
       - 3000:3000
     container_name: server-fs
+    environment:
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_USER=luis
+      - DB_PWD=luis123
+      - DB_DATABASE=fullstack_db
+    depends_on:
+      - db
+
   client:
     build: ./client-fs-study
     command: ng serve --host 0.0.0.0
@@ -21,3 +58,6 @@ services:
     container_name: client-fs
     depends_on:
       - server
+
+volumes:
+  dbdata:
