@@ -1,6 +1,8 @@
 {
     "recommendations": [
         "orta.vscode-jest",
-        "andys8.jest-snippets"
+        "andys8.jest-snippets",
+        "ms-vscode.vscode-typescript-tslint-plugin",
+        "dbaeumer.vscode-eslint"
     ]
 }
