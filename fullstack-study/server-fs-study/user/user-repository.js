@@ -1,7 +1,8 @@
 const { getKnex } = require('../db-connection')
 
 const findAllUsers = async () => {
-  return getKnex().from('users')
+  const [rows] = await getKnex().from('user')
+  return rows
 }
 
 module.exports = {
