@@ -8,11 +8,11 @@ describe('The User Repository', () => {
       from: jest.fn().mockReturnThis()
     }
 
-    jest.doMock('../db-connection', () => ({
+    jest.doMock('../../db-connection', () => ({
       getKnex: (mockGetKnex = jest.fn().mockReturnValue(mockQuerybuilder))
     }))
 
-    repository = require('./user-repository')
+    repository = require('../user-repository')
   })
 
   describe('the find all users', () => {

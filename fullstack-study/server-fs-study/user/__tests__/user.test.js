@@ -1,4 +1,4 @@
-const { User, fromRow: fromUserRow } = require('./user')
+const { User, fromRow: fromUserRow } = require('../user')
 const faker = require('@faker-js/faker').default
 
 describe('the User model', () => {
