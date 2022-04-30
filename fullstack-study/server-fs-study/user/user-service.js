@@ -1,9 +1,10 @@
 const userRepository = require('./user-repository')
 
-const findAllUsers = async () => {
-  return await userRepository.findAllUsers()
-}
+const findAllUsers = async () => await userRepository.findAllUsers()
+
+const findUserById = async (userId) => await userRepository.findUserById(userId)
 
 module.exports = {
-  findAllUsers
+  findAllUsers,
+  findUserById,
 }

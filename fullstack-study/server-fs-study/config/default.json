@@ -1,11 +1,10 @@
 {
-    "dbConfig": {
-      "host": "127.0.0.1",
-      "port": 3306,
-      "user": "wrong-user",
-      "password": "wrong-pass",
-      "database": "wrong-database",
-      "timezone": "UTC"
-    }
+  "dbConfig": {
+    "host": "127.0.0.1",
+    "port": 3306,
+    "user": "wrong-user",
+    "password": "wrong-pass",
+    "database": "wrong-database",
+    "timezone": "UTC"
   }
-  
+}

@@ -1,11 +1,10 @@
 {
-    "dbConfig": {
-      "host": "DB_HOST",
-      "port": "DB_PORT",
-      "user": "DB_USER",
-      "password": "DB_PWD",
-      "database": "DB_DATABASE",
-      "timezone": "DB_TIMEZONE"
-    }
+  "dbConfig": {
+    "host": "DB_HOST",
+    "port": "DB_PORT",
+    "user": "DB_USER",
+    "password": "DB_PWD",
+    "database": "DB_DATABASE",
+    "timezone": "DB_TIMEZONE"
   }
-  
+}

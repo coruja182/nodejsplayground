@@ -11,7 +11,7 @@ const connection = knex({
 })
 
 /**
- * @returns {knex.Knex<TRecord, TResult>} 
+ * @returns {knex.Knex<TRecord, TResult>}
  */
 const getKnex = () => {
   return connection
