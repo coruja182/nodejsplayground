@@ -1,5 +1,5 @@
 describe('The User Repository', () => {
-  let mockGetKnex, repository, mockQuerybuilder
+  let mockGetKnex, /** @type {import('../user-repository')} */ repository, mockQuerybuilder, mockKnexConstructor
 
   beforeEach(() => {
     mockQuerybuilder = {
@@ -8,8 +8,12 @@ describe('The User Repository', () => {
       from: jest.fn().mockReturnThis()
     }
 
+    mockKnexConstructor = jest.fn()
+      .mockReturnValue(mockQuerybuilder)
+    mockGetKnex = jest.fn()
+      .mockReturnValue(mockKnexConstructor)
     jest.doMock('../../db-connection', () => ({
-      getKnex: (mockGetKnex = jest.fn().mockReturnValue(mockQuerybuilder))
+      getKnex: mockGetKnex
     }))
 
     repository = require('../user-repository')
@@ -17,14 +21,32 @@ describe('The User Repository', () => {
 
   describe('the find all users', () => {
     beforeEach(async () => {
+
+      mockKnexConstructor.mockResolvedValue([])
+
+      mockGetKnex.mockReturnValue(mockKnexConstructor)
+
       await repository.findAllUsers()
     })
+
     it('should retrieve the database connection', () => {
       expect(mockGetKnex).toBeCalledTimes(1)
     })
 
-    it('should build the query to fetch all users', () => {
-      expect(mockQuerybuilder.from).toBeCalledWith('users')
+    it('should call the knex constructor with the user table name', () => {
+      expect(mockKnexConstructor).toBeCalledWith('user')
+    })
+  })
+
+  describe('the find user by id', () => {
+    it('should throw an error when the user id is not provided', async () => {
+      expect(async () => {
+        await repository.findUserById()
+      }).toThrowError('userId is mandatory to fetch an User')
+    })
+
+    it('should build the query', async () => {
+      await repository.findUserById('id')
     })
   })
 })

@@ -5,7 +5,7 @@ const { fromRow, COLUMNS, toRow } = require('./user')
  * Finds all users
  * @returns {import('./user.js').User[]}
  */
-const findAllUsers = async () => (await getKnex().from('user')).map(fromRow)
+const findAllUsers = async () => (await getKnex()('user')).map(fromRow)
 
 /**
  * Finds an User by its ID
@@ -16,7 +16,7 @@ const findAllUsers = async () => (await getKnex().from('user')).map(fromRow)
 const findUserById = async (userId) => {
   if (!userId) throw new Error('userId is mandatory to fetch an User')
 
-  const result = await getKnex().from('user').where(COLUMNS.USER_ID, userId)
+  const result = await getKnex()('user').where(COLUMNS.USER_ID, userId)
   result.length ? result[0] : undefined
 }
 
