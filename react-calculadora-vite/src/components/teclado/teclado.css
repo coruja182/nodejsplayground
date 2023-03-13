@@ -1,0 +1,8 @@
+.Teclado {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border: 1px solid blue;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 36px;
+}
