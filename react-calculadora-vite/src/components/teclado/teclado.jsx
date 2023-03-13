@@ -19,6 +19,7 @@ const Teclado = ({manejoBotones}) => {
         <Boton nombreBoton={"0"} manejoOnClick={manejoBotones} />
         <Boton nombreBoton={"."} manejoOnClick={manejoBotones} />
         <Boton nombreBoton={"/"} manejoOnClick={manejoBotones} />
+        <Boton nombreBoton={"="} manejoOnClick={manejoBotones} />
     </div>
 }
 

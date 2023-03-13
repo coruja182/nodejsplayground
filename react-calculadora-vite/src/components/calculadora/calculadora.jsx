@@ -12,28 +12,49 @@ const Calculadora = (props) => {
     const [total, setTotal] = useState()
     const [operador, setOperador] = useState()
 
-
     const manejarClickBoton = (nombre) => {
         console.log('manejarClickBoton', nombre)
 
         if (nombre === 'CE') {
+            setSiguiente()
+            setOperador()
+            setTotal()
 
-            console.log('limpiar')
-            return setSiguiente(() => undefined)
         } else if (!isNaN(nombre)) {
 
-            // FIXME: la app deja meter el número '000222' después de presionar el '0' más de una vez
-            console.log('apretou algún numero en el teclado')
-            return setSiguiente((siguienteAnterior) => siguienteAnterior ? siguienteAnterior + nombre : nombre)
+            return setSiguiente((siguienteAnterior) => {
+                if (!siguienteAnterior) {
+                    return nombre === '0' ? undefined : nombre
+                } else {
+                    return (siguienteAnterior + nombre)
+                }
+            })
+        } else if (nombre === '.') {
+            return setSiguiente((siguienteAnterior) => {
+                if (siguienteAnterior) {
+                    return siguienteAnterior.includes('.') ? siguienteAnterior : siguienteAnterior + nombre
+                } else {
+                    return '0.'
+                }
+            })
+        } else if (siguiente) {
+            // es operador
+            setTotal((t) => siguiente)
+            setSiguiente()
+            setOperador((o) => nombre)
         }
     }
 
-    return (
-        <div className="Calculadora">
-            <Display valor={siguiente} />
-            <Teclado manejoBotones={manejarClickBoton} />
+    return <div className="Calculadora">
+        <Display valor={siguiente} />
+        <Teclado manejoBotones={manejarClickBoton} />
+        <div>
+            <br />siguiente: {siguiente + ''}
+            <br />total: {total + ''}
+            <br />operador: {operador + ''}
         </div>
-    )
+    </div>
+
 }
 
 export default Calculadora
