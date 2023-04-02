@@ -1,0 +1,113 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "fruits": [
+    {
+      "id": "1",
+      "name": "banana"
+    },
+    {
+      "id": "2",
+      "name": "apple"
+    },
+    {
+      "name": "fruit",
+      "id": "DJUhRvy"
+    },
+    {
+      "name": "fruit",
+      "id": "DJ0RdaN"
+    }
+  ],
+  "personagens": [
+    {
+      "name": "Tryndamere",
+      "tipo": "fisico",
+      "alcance": "perto",
+      "id": 1
+    },
+    {
+      "name": "Akali",
+      "tipo": "hibrido",
+      "alcance": "perto",
+      "id": 2
+    },
+    {
+      "name": "Amumu",
+      "tipo": "magico",
+      "alcance": "perto",
+      "id": 3
+    },
+    {
+      "name": "Amumu",
+      "tipo": "magico",
+      "alcance": "perto",
+      "id": 4
+    }
+  ],
+  "animais": [
+    {
+      "name": "Cachorro",
+      "nomeCientifco": "Caninus Bunitus",
+      "tipo": "mamifero",
+      "id": 1
+    },
+    {
+      "name": "Cachorro",
+      "nomeCientifco": "Caninus Bunitus",
+      "tipo": "mamifero",
+      "id": 2
+    },
+    {
+      "name": "Cachorro",
+      "nomeCientifco": "Caninus Bunitus",
+      "tipo": "mamifero",
+      "id": 3
+    },
+    {
+      "name": "Cachorro",
+      "nomeCientifco": "Caninus Bunitus",
+      "tipo": "mamifero",
+      "id": 4
+    },
+    {
+      "name": "Cachorro",
+      "nomeCientifco": "Caninus Bunitus",
+      "tipo": "mamifero",
+      "id": 5
+    },
+    {
+      "name": "Cachorro",
+      "nomeCientifco": "Caninus Bunitus",
+      "tipo": "mamifero",
+      "id": 6
+    },
+    {
+      "name": "Cachorro",
+      "nomeCientifco": "Caninus Bunitus",
+      "tipo": "mamifero",
+      "id": 7
+    },
+    {
+      "name": "Cachorro",
+      "nomeCientifco": "Caninus Bunitus",
+      "tipo": "mamifero",
+      "id": 8
+    }
+  ]
+}
