@@ -9,7 +9,10 @@ A finalidade deste projeto:
   - angular material
   - angular bootstrap
 
-[^crud]: create, read, update, delete
+## Estrutura do Projeto
+
+- `src/app/componentes`: novos componentes
+- `mockserver`: base de dados do `json-server`
 
 ## Desenvolvimento
 
@@ -24,3 +27,9 @@ npm run <script>
 - watch: constrói continuamente, observando por arquivos modificados
 - test: executa os testes
 - `sobe-mock`: executar o json-server para simular o backend
+
+### json-server
+
+Depois de executar o json.server o mesmo estará disponível no endereço <http://localhost:3000>
+
+[^crud]: create, read, update, delete
