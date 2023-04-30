@@ -1,0 +1,148 @@
+{
+	"info": {
+		"_postman_id": "e5ae9c02-9573-4293-817a-18d5252b352f",
+		"name": "angular-cadastro",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13942738"
+	},
+	"item": [
+		{
+			"name": "pessoas",
+			"item": [
+				{
+					"name": "listar pessoas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{url_base}}/pessoas?cpf=35081977861",
+							"protocol": "http",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"pessoas"
+							],
+							"query": [
+								{
+									"key": "cpf",
+									"value": "35081977861"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "adicionar pessoa",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"Nome Pessoa\",\n    \"cpf\": \"1234567890\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{url_base}}/pessoas",
+							"protocol": "http",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"pessoas"
+							],
+							"query": [
+								{
+									"key": "cpf",
+									"value": "35081977861",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "atualizar pessoa",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 2,\n    \"nome\": \"João da Silva\",\n    \"cpf\": \"1234567890\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{url_base}}/pessoas",
+							"protocol": "http",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"pessoas"
+							],
+							"query": [
+								{
+									"key": "cpf",
+									"value": "35081977861",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletar pessoa",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    nome: { { dsfd } }\n}",
+							"options": {
+								"raw": {
+									"language": "javascript"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{url_base}}/pessoas/:id",
+							"protocol": "http",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"pessoas",
+								":id"
+							],
+							"query": [
+								{
+									"key": "cpf",
+									"value": "35081977861",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

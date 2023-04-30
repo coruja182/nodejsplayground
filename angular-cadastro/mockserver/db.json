@@ -15,5 +15,17 @@
   ],
   "profile": {
     "name": "typicode"
-  }
+  },
+  "pessoas": [
+    {
+      "id": 1,
+      "nome": "Luís Henrique Silveira da Rocha",
+      "cpf": "35081977861"
+    },
+    {
+      "nome": "Nome Pessoa",
+      "cpf": "1234567890",
+      "id": 3
+    }
+  ]
 }

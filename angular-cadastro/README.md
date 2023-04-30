@@ -16,6 +16,11 @@ A finalidade deste projeto:
 
 ## Desenvolvimento
 
+### Requisitos
+
+- nodejs lts (atualmente 18.12.1)
+- Postman (opcional para fazer testes no backend)
+
 ### scripts do node
 
 ```shell
@@ -32,4 +37,15 @@ npm run <script>
 
 Depois de executar o json.server o mesmo estará disponível no endereço <http://localhost:3000>
 
+#### endpoints
+
+- GET `/pessoas`: listar pessoas
+- POST `/pessoas`: adicionar pessoa, passando o objeto pessoa no body
+- PUT/PATCH `/pessoas`: editar pessoa, passando o objeto pessoa no body
+- DELETE `/pessoas/:id` deletar pessoa com id `:id`
+
 [^crud]: create, read, update, delete
+
+### postman
+
+Criei uma collection para o postman. Pode ser importada a partir da pasta `postman-arquivos`
