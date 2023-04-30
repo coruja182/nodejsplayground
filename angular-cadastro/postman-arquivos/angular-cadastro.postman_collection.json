@@ -15,7 +15,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://{{url_base}}/pessoas?cpf=35081977861",
+							"raw": "http://{{url_base}}/pessoas",
 							"protocol": "http",
 							"host": [
 								"{{url_base}}"
@@ -26,7 +26,8 @@
 							"query": [
 								{
 									"key": "cpf",
-									"value": "35081977861"
+									"value": "35081977861",
+									"disabled": true
 								}
 							]
 						}
@@ -74,7 +75,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id\": 2,\n    \"nome\": \"João da Silva\",\n    \"cpf\": \"1234567890\"\n}\n",
+							"raw": "{\n    \"nome\": \"João da Silva\",\n    \"cpf\": \"1234567890\"\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -82,19 +83,26 @@
 							}
 						},
 						"url": {
-							"raw": "http://{{url_base}}/pessoas",
+							"raw": "http://{{url_base}}/pessoas/:id",
 							"protocol": "http",
 							"host": [
 								"{{url_base}}"
 							],
 							"path": [
-								"pessoas"
+								"pessoas",
+								":id"
 							],
 							"query": [
 								{
 									"key": "cpf",
 									"value": "35081977861",
 									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
 								}
 							]
 						}
@@ -135,7 +143,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "2"
+									"value": "3"
 								}
 							]
 						}
