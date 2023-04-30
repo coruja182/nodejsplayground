@@ -21,6 +21,14 @@ A finalidade deste projeto:
 - nodejs lts (atualmente 18.12.1)
 - Postman (opcional para fazer testes no backend)
 
+### Executar o projeto em modo de desenvolvimento
+
+```sh
+npm install
+
+ng serve
+```
+
 ### scripts do node
 
 ```shell
@@ -41,7 +49,7 @@ Depois de executar o json.server o mesmo estará disponível no endereço <http:
 
 - GET `/pessoas`: listar pessoas
 - POST `/pessoas`: adicionar pessoa, passando o objeto pessoa no body
-- PUT/PATCH `/pessoas`: editar pessoa, passando o objeto pessoa no body
+- PUT/PATCH `/pessoas/:id`: editar pessoa com id `:id`, passando o objeto pessoa no body
 - DELETE `/pessoas/:id` deletar pessoa com id `:id`
 
 [^crud]: create, read, update, delete
