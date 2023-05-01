@@ -1,1 +1,9 @@
-<p>lista-pessoas works!</p>
+<table>
+  <tr *ngFor="let pessoa of listaPessoas">
+    <td>{{pessoa.id}}</td>
+    <td>{{pessoa.nome}}</td>
+    <td>{{pessoa.cpf}}</td>
+    <td><button type="button" [routerLink]="['/pessoa', pessoa.id, 'editar']">Editar</button></td>
+    <td><button type="button" (click)="deletarPessoa(pessoa)">Deletar</button></td>
+  </tr>
+</table>

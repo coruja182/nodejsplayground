@@ -17,6 +17,7 @@ A finalidade deste projeto:
 ## Rotas
 
 - `/pessoa/nova`: formulário de cadastro de pessoa
+- `/pessoa/:id/editar`: formulário de cadastro de pessoa em modo de edição
 - `/pessoa/lista`: lista de pessoas
 
 As rotas estão definidas em [app-routing.module.ts](./src/app/app-routing.module.ts#L6)
@@ -68,5 +69,7 @@ Criei uma collection para o postman. Pode ser importada a partir da pasta `postm
 ## Documentação Adicional
 
 - [Angular Docs: validação de formulários][angular-io-form-validation]
+- [Angular Training Guide: Linkando rotas com parâmetros][angular-training-guide-linking-routes]
 
 [angular-io-form-validation]: https://angular.io/guide/form-validation
+[angular-training-guide-linking-routes]: https://angular-training-guide.rangle.io/routing/routeparams

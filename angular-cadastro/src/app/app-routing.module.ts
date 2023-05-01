@@ -9,6 +9,10 @@ const routes: Routes = [
     component: FormularioPessoaComponent,
   },
   {
+    path: 'pessoa/:id/editar',
+    component: FormularioPessoaComponent,
+  },
+  {
     path: 'pessoa/lista',
     component: ListaPessoasComponent,
   },
@@ -18,4 +22,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
