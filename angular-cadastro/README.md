@@ -14,6 +14,13 @@ A finalidade deste projeto:
 - `src/app/componentes`: novos componentes
 - `mockserver`: base de dados do `json-server`
 
+## Rotas
+
+- `/pessoa/nova`: formulário de cadastro de pessoa
+- `/pessoa/lista`: lista de pessoas
+
+As rotas estão definidas em [app-routing.module.ts](./src/app/app-routing.module.ts#L6)
+
 ## Desenvolvimento
 
 ### Requisitos
@@ -26,7 +33,7 @@ A finalidade deste projeto:
 ```sh
 npm install
 
-ng serve
+npm run start
 ```
 
 ### scripts do node
@@ -57,3 +64,9 @@ Depois de executar o json.server o mesmo estará disponível no endereço <http:
 ### postman
 
 Criei uma collection para o postman. Pode ser importada a partir da pasta `postman-arquivos`
+
+## Documentação Adicional
+
+- [Angular Docs: validação de formulários][angular-io-form-validation]
+
+[angular-io-form-validation]: https://angular.io/guide/form-validation

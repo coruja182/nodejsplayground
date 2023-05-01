@@ -1,1 +1,22 @@
-<p>formulario-pessoa works!</p>
+<form [formGroup]="meuFormulario" (ngSubmit)="onSubmitFormulario()">
+  <input type="hidden" name="id" formControlName="id" />
+
+  <label for="txtNome">Nome</label>
+  <input
+    type="text"
+    id="txtNome"
+    name="nome"
+    formControlName="nome"
+    autofocus
+  />
+  <br />
+
+  <label for="txtCpf">CPF</label>
+  <input type="text" id="txtCpf" name="cpf" formControlName="cpf" />
+  <br />
+
+  <input type="reset" value="Limpar" />
+
+  <!-- [disabled]="!meuFormulario.valid  ==> serve para manter o botão desabilitado enquanto o `meuFormulario` não for válido -->
+  <input type="submit" value="Cadastrar" [disabled]="!meuFormulario.valid" />
+</form>
