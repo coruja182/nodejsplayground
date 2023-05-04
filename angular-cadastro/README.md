@@ -31,7 +31,7 @@ As rotas estão definidas em [app-routing.module.ts](./src/app/app-routing.modul
 
 ### Executar o projeto em modo de desenvolvimento
 
-```sh
+```shell
 npm install
 
 npm run start
@@ -43,11 +43,11 @@ npm run start
 npm run <script>
 ```
 
-- start: roda o projeto
-- build: constrói o projeto
-- watch: constrói continuamente, observando por arquivos modificados
-- test: executa os testes
-- `sobe-mock`: executar o json-server para simular o backend
+- `start`: roda o projeto
+- `build`: constrói o projeto
+- `watch`: constrói continuamente, observando por arquivos modificados
+- `test`: executa os testes
+- `sobe-mock`: executa o json-server para simular o backend
 
 ### json-server
 
@@ -60,8 +60,6 @@ Depois de executar o json.server o mesmo estará disponível no endereço <http:
 - PUT/PATCH `/pessoas/:id`: editar pessoa com id `:id`, passando o objeto pessoa no body
 - DELETE `/pessoas/:id` deletar pessoa com id `:id`
 
-[^crud]: create, read, update, delete
-
 ### postman
 
 Criei uma collection para o postman. Pode ser importada a partir da pasta `postman-arquivos`
@@ -73,3 +71,5 @@ Criei uma collection para o postman. Pode ser importada a partir da pasta `postm
 
 [angular-io-form-validation]: https://angular.io/guide/form-validation
 [angular-training-guide-linking-routes]: https://angular-training-guide.rangle.io/routing/routeparams
+
+[^crud]: create, read, update, delete
