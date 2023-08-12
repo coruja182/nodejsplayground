@@ -1,10 +1,12 @@
 import { Card } from "antd";
 
-export default function Home() {
+const HomePage = () => {
   return (
-    <Card title="Welcome">
+    <Card title="Home" style={{ width: '100%', height: '100%'}}>
       <h2>This is the home page</h2>
       <p>Some Content</p>
     </Card>
   );
 }
+
+export default HomePage;
